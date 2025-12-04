@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="" type="image/x-icon" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta author="" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <title>ContactHub - Smart Contact Manager</title>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> -->
+
+</head>
+
+<body>
+    <nav id="naxvId"
+        class="navbar .navbar-nav-scroll  navbar-expand-lg bg-body-tertiary py-1  w-100 position-fixed z-3">
+        <div class="container">
+            <div class="d-flex">
+                <div class="logo mt-3 me-2">
+                    <span class=" text-white rounded-3 fs-4 p-2 bg-indigo"><i
+                            class="fa-solid fa-address-book"></i></span>
+                </div>
+                <div>
+                    <a class="navbar-brand tittles-color fs-4  fw-bolder  " href="#">Contact<span
+                            class="main-color">Hub</span></a>
+                    <p class="d-block basic-color">Smart Contact Manager</p>
+                </div>
+            </div>
+
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse align-content-center " id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-2 p-color">
+                    <li class="nav-item ">
+                        <a class="nav-link active mb-2" aria-current="page" href="#"><button
+                                class="btn bg-indigo text-white " onclick="openModal()"><i class="fa-solid fa-plus"></i>
+                                Add
+                                Contact</button></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Services"><i class="fa-solid fa-bell fs-4 mt-2 basic-color"></i> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Testimonials"><i
+                                class="fa-solid fa-gear fs-4 mx-3 mt-2 basic-color"></i> </a>
+                    </li>
+                    <li class="nav-item nav-img rounded-3">
+                        <img src="images/avatar-4.jpg" alt="" class="w-100 rounded-3 mt-2 ">
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="pt-5">
+        <div class="container pt-5">
+            <div class="row py-3 gx-4">
+                <div class="col-md-4">
+                    <div class="inner d-flex align-items-center header-card rounded-4 p-2">
+                        <span class="text-white bg-info me-4 p-2 rounded-3"> <i
+                                class="fa-solid fa-users  fs-4 "></i></span>
+                        <div>
+                            <p class="mb-0 basic-color">Total</p>
+                            <p class="h2" id="total"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="inner d-flex align-items-center header-card rounded-4 p-2">
+                        <span class="text-white bg-warning me-4 p-2 rounded-3"> <i
+                                class="fa-solid fa-star  fs-4 "></i></span>
+                        <div>
+                            <p class="mb-0 basic-color">Favorites</p>
+                            <p class="h2 " id="fav"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="inner d-flex align-items-center header-card rounded-4 p-2">
+                        <span class="text-white bg-danger me-4 p-2 rounded-3"> <i
+                                class="fa-solid fa-heart-pulse  fs-4 "></i></span>
+                        <div>
+                            <p class="mb-0 basic-color">Emergency</p>
+                            <p class="h2" id="rawEmergency"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container pt-5">
+            <div class="row gx-4">
+                <div class="col-md-9">
+                    <div class="inner">
+                        <h2>All Contacts</h2>
+                        <p class="basic-color" id="aboveSearch"></p>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1"><i
+                                    class="fa-solid fa-magnifying-glass"></i></span>
+                            <input type="text" class="form-control " placeholder="Search by name, phone, or email..."
+                                aria-label="Username" aria-describedby="basic-addon1" oninput="displayAll(this)">
+                        </div>
+                        <div class="row   g-4 mb-3" id="rowData">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-3">
+                    <div class="inner ">
+                        <div class="first-sidebar rounded-3 mb-3">
+                            <div class="d-flex align-items-center p-3 bg-danger-subtle rounded-top-3 ">
+                                <span class="text-white bg-warning me-2 rounded-3 p-2 "> <i
+                                        class="fa-solid fa-star  fs-4 "></i></span>
+                                <div>
+                                    <p class="mb-0 ">Favorites</p>
+                                    <p class="basic-color mb-0 small-font">Quick access to starred contacts</p>
+                                </div>
+
+                            </div>
+                            <div id="favouriteData">
+                            </div>
+                        </div>
+                        <div class="second-sidebar rounded-3">
+                            <div class="d-flex align-items-center p-3 bg-danger-subtle rounded-top-3 ">
+                                <span class="text-white bg-danger me-2 rounded-3 p-2 "> <i
+                                        class="fa-solid fa-heart-pulse  fs-4 "></i></span>
+                                <div>
+                                    <p class="mb-0 ">Emergency</p>
+                                    <p class="basic-color mb-0 small-font">Important contacts for urgent calls</p>
+                                </div>
+
+                            </div>
+                            <div id="emergencyData">
+                                <div
+                                    class="d-flex align-items-center justify-content-between p-3 pb-0 bg-white rounded-bottom-3 ">
+                                    <div class="d-flex align-items-center">
+                                        <span class="text-white bg-indigo me-2 rounded-3 p-2 mb-3">DM</span>
+                                        <div>
+                                            <p class="mb-0">
+                                                McKenzie Dodson</p>
+                                            <p class="basic-color small-font">01064398969</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-danger bg-danger-subtle  p-2 fs-5 rounded-2 me-1 mb-3"><i
+                                            class="fa-solid fa-phone "></i></span>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div id="modalOverlay" class="overlay position-fixed d-none align-items-center justify-content-center z-3 ">
+                <div class="modalBox pt-0">
+                    <div class="position-sticky z-3 top-0 start-0 end-0 bg-white pt-2 ">
+                        <span id="closeModal" class="close" onclick="closeModal()">&times;</span>
+
+                        <h2>Add New Contact</h2>
+                    </div>
+                    <div class="photo-section mt-4 ">
+                        <input type="file" id="uploadPhoto" accept="image/*" hidden>
+
+                        <div class="avatar" id="avatarPreview">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+
+                        <button type="button" id="changePhotoBtn" class="change-photo-btn">
+                            <i class="fa-solid fa-camera"></i> Change Photo
+                            <input class="form-control" type="file" id="contactImage" multiple>
+                        </button>
+                    </div>
+
+                    <label for="contactName" class="form-label">Full Name <span class="text-danger">
+                            *</span></label>
+                    <input type="text" placeholder="Enter Full Name" id="contactName" oninput="validateAll(this)"class="form-control ">
+                     <p class="alert alert-danger mt-1 d-none " id="errorName">invalid Name</p>
+                    <label for="contactNo" class="form-label mt-4">Phone Number <span class="text-danger">
+                            *</span></label>
+                    
+                    <input type="text" placeholder="eg.0100567890" id="contactNo" oninput="validateAll(this)"  class="form-control">
+                    <p class="alert alert-danger mt-1 d-none " id="errorNo">invalid phone number</p>
+                    <label for="contactEmail" class="form-label mt-4">Email Address </label>
+                    <input type="email" placeholder="Email Address" id="contactEmail" oninput="validateAll(this)" class="form-control">
+                     <p class="alert alert-danger mt-1 d-none " id="errorEmail">invalid Email</p>
+                    <label for="contactAddress" class="form-label mt-4">Address </label>
+                    <input type="text" placeholder="Enter Address" id="contactAddress" class="input-form">
+                    <label for="contactGroup" class="form-label mt-4">Group </label>
+                    <select class="form-select" aria-label="Default select example" id="contactGroup">
+                        <option selected disabled>Open this select menu</option>
+                        <option value="Family">Family</option>
+                        <option value="Friends">Friends</option>
+                        <option value="Work">Work</option>
+                        <option value="School">School</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <div class="mt-4">
+                        <label class=" text-sm font-medium" for="contactNotes">Notes</label>
+                        <textarea id="contactNotes" placeholder="Add notes about this contact"
+                            class="w-100 px-4 py-3 border border-gray-200 rounded-xl text-sm "></textarea>
+                    </div>
+                    <div class="d-flex  gap-4 mt-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="favourite" id="contactFavorite">
+                            <label class="form-check-label" for="contactFavorite">
+                                <span class="text-warning"><i class="fa-solid fa-star"></i></span>
+                                Favorite
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="emergency" id="contactEmergency">
+                            <label class="form-check-label" for="contactEmergency">
+                                <span class="text-danger"><i class="fa-solid fa-heart-pulse"></i></span>
+                                Emergency
+                            </label>
+                        </div>
+                    </div>
+                    <div class="d-flex g-4 mt-5">
+                        <button class="btn bg-light-subtle w-50" onclick="closeModal()">Cancel</button>
+                        <button class="btn bg-indigo text-white w-50" id="saveBtn" onclick="addContact()"> <i
+                                class="fa-solid fa-check mr-2"></i>Save
+                            Contact</button>
+                        <button class="btn bg-indigo text-white w-50 d-none" id="updateBtn"
+                            onclick="updateThisContact()"> <i class="fa-solid fa-check mr-2"></i>update
+                            Contact</button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="overlay position-fixed align-items-center d-none justify-content-center z-3 " id="modelDelete">
+                <div class="modalBox delete">
+                    <div class="avatar text-danger avatar-delete">
+                        <i class="fa-solid fa-warning"></i>
+                    </div>
+                    <h2>Delete Contact?</h2>
+
+                    <p class="text-center">Are you sure you want to delete Dalia Mahmoud El Sayed? This action cannot be
+                        undone.</p>
+                    <div class="d-flex justify-content-center align-items-center gap-2">
+                        <button class="btn bg-danger text-white " onclick="deleteContact()">Yes,Delete it!</button>
+                        <button class="btn cancel text-white" onclick="closeDelete()"> Cancel</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
